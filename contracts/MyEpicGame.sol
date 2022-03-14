@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: UNLICENSED
-
 pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
@@ -23,8 +22,7 @@ contract MyEpicGame {
         uint[] memory characterAttackDamage
     ) {
         for (uint i = 0; i < characterNames.length; i += 1) {
-            defaultCharacters.push(
-                CharacterAttributes({
+            defaultCharacters.push(CharacterAttributes({
                     characterIndex: i,
                     name: characterNames[i],
                     imageURI: characterImageURIs[i],
