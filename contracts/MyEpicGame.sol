@@ -5,6 +5,15 @@ pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 
 contract MyEpicGame{
+    struct CharacterAttributes {
+        uint characterIndex;
+        string name;
+        string imageURI;
+        uint hp;
+        uint maxHp;
+        uint attackDamage;
+    }
+
     constructor(){
         console.log("Yayy! my game contract");
     }
