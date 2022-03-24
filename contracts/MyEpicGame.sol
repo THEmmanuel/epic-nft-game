@@ -24,6 +24,17 @@ contract MyEpicGame is ERC721 {
   CharacterAttributes[] defaultCharacters;
 
   mapping(uint256 => CharacterAttributes) public nftHolderAttributes;
+
+  struct BigBossGodzilla {
+      string name;
+      string imageURI;
+      uint hp;
+      uint maxHp;
+      uint attackDamage;
+  }
+  
+  BigBossGodzilla public bigBossGodzilla;
+
   mapping(address => uint256) public nftHolders;
 
   constructor(
