@@ -46,10 +46,19 @@ contract MyEpicGame is ERC721 {
     string memory bossImageURI,
     uint bossHp,
     uint bossAttackDmg
-    console.log("Done initializing boss %s w/ HP %s, img %s", bigBoss.name, bigBoss.hp, bigBoss.imageURI);
   )
     ERC721("Heroes", "HERO")
   {
+    bigBoss = BigBoss({
+        name: bossName,
+        imageURI: bossImageURI,
+        hp: bossHp,
+        maxHp: bossHp,
+        attackDamage: bossAttackDmg
+    });
+
+    console.log("Done initializing boss %s w/ HP %s, img %s", bigBoss.name, bigBoss.hp, bigBoss.imageURI);
+
     for(uint i = 0; i < characterNames.length; i += 1) {
       defaultCharacters.push(CharacterAttributes({
         characterIndex: i,
@@ -81,7 +90,14 @@ contract MyEpicGame is ERC721 {
     console.log("Minted NFT w/ tokenId %s and characterIndex %s", newItemId, _characterIndex);    
     nftHolders[msg.sender] = newItemId;
     _tokenIds.increment();
-  }
+}   
+
+    function attackBoss() public {
+        uint256 nftTokenIdofPlayer = nftHolders[msg.sender];
+        CharacterAttributes storage player = nftHolderAttributes[nftTokenIdofPlayer];
+        console.log("\nPlayer w/ character %s about to attack. Has %s HP and %s AD", player.name, player.hp, player.attackDamage);
+        console.log("Boss %s has %s HP and %s AD", bigBoss.name, bigBoss.hp, bigBoss.attackDamage);
+    }
 
     function tokenURI(uint256 _tokenId) public view override returns (string memory) {
       CharacterAttributes memory charAttributes = nftHolderAttributes[_tokenId];

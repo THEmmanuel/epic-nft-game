@@ -9,14 +9,23 @@ const main = async () => {
         ],
 
         [100, 250, 400],
-        [50, 25, 40]
+        [50, 25, 40],
+
+        'Godzilla', //Boss name
+        'https://upload.wikimedia.org/wikipedia/en/2/29/Godzilla_%2754_design.jpg', //Boss Image URL
+        10000, //Boss hp
+        50, //Boss attack damage
     );
     await gameContract.deployed();
     console.log('Contract deployed to: ', gameContract.address);
 
     let txn;
-    txn = await gameContract.mintCharacterNFT(2);
+    txn = await gameContract.mintCharacterNFT(1);
     await txn.wait();
+    
+    txn = await gameContract.attackBoss();
+    await txn.wait();
+
     let returnedTokenUri = await gameContract.tokenURI(1);
     console.log('Token URI:', returnedTokenUri)
 };
