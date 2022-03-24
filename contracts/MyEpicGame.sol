@@ -130,7 +130,7 @@ contract MyEpicGame is ERC721 {
     // Console for ease.
     console.log("Player attacked boss. New boss hp: %s", bigBoss.hp);
     console.log("Boss attacked player. New player hp: %s\n", player.hp);
-}
+};
 
     function checkIfUserHasNFT() public view returns (CharacterAttributes memory) {
         // Get the tokenId of the user's character NFT
@@ -146,10 +146,14 @@ contract MyEpicGame is ERC721 {
             CharacterAttributes memory emptyStruct;
             return emptyStruct;
         } 
-    }
+    };
 
     function getAllDefaultCharacters() public view returns (CharacterAttributes[] memory) {
         return defaultCharacters;
+    };
+
+    function getBigBoss() public view returns (BigBoss memory) {
+        return bigBoss;
     }
 
 
