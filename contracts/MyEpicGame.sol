@@ -36,6 +36,8 @@ contract MyEpicGame is ERC721 {
   BigBoss public bigBoss;
 
   mapping(address => uint256) public nftHolders;
+  event CharacterNFTMinted(address sender, uint256 tokenId, uint256 characterIndex);
+  event AttackComplete(uint newBossHp, uint newPlayerHp);
 
   constructor(
     string[] memory characterNames,
